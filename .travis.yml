@@ -12,6 +12,7 @@ addons:
       - gcc-4.8
       - g++-4.8
 before_install:
+  - if [ "$TRAVIS_ARCH" = "ppc64le" ]; then rvm ruby-2.1.1 do rvm gemset create; fi
   - git clone https://github.com/bramstein/sfnt2woff-zopfli.git sfnt2woff-zopfli && cd sfnt2woff-zopfli && make && sudo mv sfnt2woff-zopfli /usr/local/bin/sfnt2woff
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
       export CC="gcc-4.8";
